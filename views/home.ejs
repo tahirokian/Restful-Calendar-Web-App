@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home Page</title>
+    <% include head.ejs %>
+  </head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-calendar"></span> Calendar Web App</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a id="home" href="/home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li><a id="addevnt" href="#"><span class="glyphicon glyphicon-plus"></span> Add Events</a></li>
+        <li><a id="schevnt" href="#"><span class="glyphicon glyphicon-search"></span> Search Events</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-refresh"></span> Synchronize<span class="caret"></span></a>
+          <ul class="dropdown-menu" style="background:#FFEEEE;">
+            <li><a id="togoogle" href="#">To Google</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a id="frgoogle" href="#">From Google</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-check"></span> <%= user.fullname %></a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div id="eventform"></div>
+    </div>
+    <div id="dialog-confirm" title="Event Information"></div>
+    <div id="dialog-form" title="Edit Event"></div>
+    <div id="dialog-user" title="Update User"></div>
+    <div id="dialog-editDel" title=""></div>
+    <div id="dialog-clickDay" title=""></div>
+    <div class="row-fluid" style="color:#FFFFFF;">
+      <div class="col-sm-3 well well-sm" style="background:#808080;">
+        <h4 class="text-left"><span class="glyphicon glyphicon-user"></span> User Information</h4>
+        <p class="text-left">
+          <strong>Name</strong>: <%= user.fullname %><br>
+          <strong>Email</strong>: <%= user.email %><br>
+          <strong>Username</strong>: <%= user.username %><br>
+        </p>
+        <button id="btnUpdateUser" class="btn btn-default center-block"><span class="glyphicon glyphicon-edit"></span> Update</button>
+      </div>
+      <div id="calendar" class="col-sm-9 well well-sm" style="background:#808080;"></div>
+    </div>
+  </div>
+  <% include footer.ejs %>
+</body>
+</html>

@@ -1,0 +1,50 @@
+.ui-dialog {
+	top: 0;
+	left: 0;
+	padding: .2em;
+	border: 1px;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+	border: 1px;
+}
+
+.ui-dialog .ui-dialog-content {
+	border: 0;
+	padding: 2px;
+	font-size: 18px;
+	color: #CAAD75;
+	background-color: #FDF8E4;
+	overflow: auto;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+	text-align: left;
+	border-width: 1px 0 0 0;
+	background-color: #E3F1CF; 
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+	margin: .5em .4em .5em 0;
+	cursor: pointer;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+	float: right;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .yescls {
+	font-size: 15px;
+	color: #FFFFEE;
+	width: 150px;
+	background: #90C93E;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .cancelcls {
+	font-size: 15px;
+	color: #FFFFFF;
+	width: 150px;
+	background: #F86379;
+}
+
+

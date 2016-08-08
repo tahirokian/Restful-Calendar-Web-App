@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <title>Calendar Application Signup</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="/javascripts/signup.js"></script>
+  <style>
+    .container { background:#808070;color:#FFFFFF; }
+    body { padding-top:30px; }
+    a { color:#FFFFFF; font-weight:bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1 class="text-center"><span class="fa fa-sign-in"></span> Signup</h1>
+      <!-- show any messages that come back with authentication -->
+      <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+      <% } %>
+      <!-- LOGIN FORM -->
+      <div id="signupform">
+      <form>
+        <div class="form-group">
+          <label>Username:</label>
+          <input type="text" id="username" class="form-control" name="username">
+        </div>
+        <div class="form-group">
+          <label>Password:</label>
+          <input type="password" id="password" class="form-control" name="password">
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" id="email" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" id="fullname"  class="form-control" name="fullname">
+        </div>
+        <button type="submit" id="signupbtn" class="btn btn-default btn-lg center-block"><span class="fa fa-sign-in"></span> Signup</button>
+      </form>
+      <div>
+      <hr>
+      <p>Already have an account? <a href="/login">Login</a></p>
+      <p>Or go to <a href="/">Main</a></p>
+    </div>
+  </div>
+</body>
+</html>
