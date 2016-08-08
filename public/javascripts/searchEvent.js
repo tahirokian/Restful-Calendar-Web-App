@@ -14,12 +14,12 @@ function searchEventhtml(e) {
       '<div class="col-sm-6">' +
       '<div class="form-group">' +
         '<label for="startdate">Start Date:</label>' +
-        '<input type="date" autofocus="autofocus" placeholder="YYYY-MM-DD" class="form-control" id="startDate" />' +
+        '<input type="date" placeholder="YYYY-MM-DD" class="form-control" id="startDate" autofocus title="YYYY-MM-DD" />' +
       '</div> </div>' +
       '<div class="col-sm-6">' +
       '<div class="form-group">' +
         '<label for="enddate">End Date:</label>' +
-        '<input type="date" placeholder="YYYY-MM-DD" class="form-control" id="endDate" />' +
+        '<input type="date" placeholder="YYYY-MM-DD" class="form-control" id="endDate" title="YYYY-MM-DD" />' +
       '</div> </div> <br />' +
       '<div class="col-sm-5"></div>' +
       '<div class="btn-group">' +

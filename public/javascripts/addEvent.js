@@ -11,32 +11,32 @@ function addEventhtml() {
       '<div class="col-sm-2">' +
       '<div class="form-group">' +
         '<label for="startdate">Start Date:</label>' +
-        '<input type="date" autofocus="autofocus" placeholder="YYYY-MM-DD" required class="form-control" id="startDate" />' +
+        '<input type="date" placeholder="YYYY-MM-DD" autofocus class="form-control" id="startDate" title="YYYY-MM-DD" />' +
       '</div> </div>' +
       '<div class="col-sm-2">' +
       '<div class="form-group">' +
         '<label for="enddate">End Date:</label>' +
-        '<input type="date" placeholder="YYYY-MM-DD" required class="form-control" id="endDate" />' +
+        '<input type="date" placeholder="YYYY-MM-DD" class="form-control" id="endDate" title="YYYY-MM-DD" />' +
       '</div> </div>' +
       '<div class="col-sm-2">' +
       '<div class="form-group">' +
         '<label for="starttime">Start Time:</label>' +
-        '<input type="time" placeholder="HH:MM (24hr format)" required class="form-control" id="startTime" />' +
+        '<input type="time" placeholder="HH:MM (24hr format)" class="form-control" id="startTime" title="HH:MM" />' +
       '</div> </div>' +
       '<div class="col-sm-2">' +
       '<div class="form-group">' +
         '<label for="endtime">End Time:</label>' +
-        '<input type="time" placeholder="HH:MM (24hr format)" required class="form-control" id="endTime" />' +
+        '<input type="time" placeholder="HH:MM (24hr format)" class="form-control" id="endTime" title="HH:MM" />' +
       '</div> </div>' +
       '<div class="col-sm-2">' +
       '<div class="form-group">' +
         '<label for="description">Description:</label>' +
-        '<input type="text" placeholder="Description" maxlength="80" required class="form-control" id="description" />' +
+        '<input type="text" placeholder="Description" maxlength="80" class="form-control" id="description" />' +
       '</div> </div>' +
       '<div class="col-sm-2">' +
       '<div class="form-group">' +
         '<label for="place">Place:</label>' +
-        '<input type="text" placeholder="Place" maxlength="80" required class="form-control" id="place" />' +
+        '<input type="text" placeholder="Place" maxlength="80" class="form-control" id="place" />' +
       '</div> </div> <br /> <br />' +
       '<div class="col-sm-5"></div>' +
       '<div class="btn-group">' +

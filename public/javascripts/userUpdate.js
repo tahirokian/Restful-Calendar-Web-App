@@ -10,11 +10,11 @@ function userUpdate(e) {
     '<form class="form" role="form">' +
       '<div class="form-group">' +
         '<label for="name">Name:</label>' +
-        '<input type="text" autofocus="autofocus" placeholder="full name" class="form-control" id="fullname" />' +
+        '<input type="text" autofocus placeholder="Full name" class="form-control" id="fullname" />' +
       '</div>' +
       '<div class="form-group">' +
         '<label for="email">Email:</label>' +
-        '<input type="text" placeholder="email@domain.com" class="form-control" id="email" />' +
+        '<input type="email" placeholder="email@domain.com" class="form-control" id="email" />' +
       '</div>' +
     '</form>'
   );
