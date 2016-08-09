@@ -58,6 +58,14 @@ function addEvent(e) {
     var d2 = $('#eventform input#endDate').val();
     var t1 = $('#eventform input#startTime').val();
     var t2 = $('#eventform input#endTime').val();
+    if ( !checkDateFormat(d1) || !checkDateFormat(d2) ) {
+      alert('Please enter a valid date in YYYY-MM-DD format.');
+      return;
+    }
+    if ( !checkTimeFormat(t1) || !checkTimeFormat(t2) ) {
+      alert('Please enter a valid time in HH:MM 24 hour format.');
+      return;
+    }
     if ( Date.parse(d1) > Date.parse(d2) ) {
       alert('Start date is later than end date');
     } else if ( (t1 > t2)  && (Date.parse(d1) == Date.parse(d2)) ) {
@@ -93,4 +101,14 @@ function addEvent(e) {
 function closeForm(e) {
   e.preventDefault();
   $('#eventform').html('');
+}
+
+function checkDateFormat (dateVal) {
+  var dateRegEx = /^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/;
+  return dateRegEx.test(dateVal);
+}
+
+function checkTimeFormat(timeVal) {
+  var timeRegEx = /^(0[0-9]|1[0-9]|2[0-3])[:]([0-5][0-9])$/;
+  return timeRegEx.test(timeVal);
 }
