@@ -18,7 +18,7 @@ CalendarAPI provides below mentioned services for creating, editing, deleting an
 12. Update user info: PUT /edituser
 13. Logout: GET /logout
 
-# Parameters ( '*' represents required field )
+# Parameters
 1. For user signup:
   *username: String
   *password: String
@@ -53,6 +53,8 @@ Date update require both starDate and endDate.
 Time update require both startDate and endDate alongwith startTime and endTime.
 Description and place can be updated independently.
 
+ ( '*' represents required field )
+ 
 6. For updating user information:
   fullname: String
   email: String
