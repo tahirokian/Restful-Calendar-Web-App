@@ -49,9 +49,11 @@ CalendarAPI provides below mentioned services for creating, editing, deleting an
   description: String,
   place: String
 
-Date update require both starDate and endDate.
-Time update require both startDate and endDate alongwith startTime and endTime.
-Description and place can be updated independently.
+  Date update require both starDate and endDate.
+  
+  Time update require both startDate and endDate alongwith startTime and endTime.
+  
+  Description and place can be updated independently.
 
 6. For updating user information:
   fullname: String,
