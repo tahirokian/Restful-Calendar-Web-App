@@ -21,6 +21,7 @@ CalendarAPI provides below mentioned services for creating, editing, deleting an
 # Parameters
 1. For user signup:
   *username: String
+  
   *password: String
   *fullname: String
   *email: String
@@ -58,7 +59,7 @@ Description and place can be updated independently.
   email: String
 
  ( '*' represents required field )
- 
+
 # Nodejs
 Nodejs can be downloaded from https://nodejs.org/en/
 For Nodejs documentation, please visit https://nodejs.org/en/docs/ 
