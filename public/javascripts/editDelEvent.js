@@ -54,7 +54,8 @@ var editEvent = function(id) {
     buttons: {
       Update: function() {
         editData = processInputData();
-        if ( editData.alertValue ) noData = false;
+        /*This check ensures if else below only executes when there is a valid data */
+        if ( editData.alertValue ) noData = false; 
         if (editData.emptyCnt < 6){
           updateEvent(editData.formData, id);
           $(this).dialog( 'close' );
@@ -113,11 +114,18 @@ var processInputData = function() {
     alert('Please provide both start date and end date.');
     return { emptyCnt: emptyCnt, formData: formData, alertValue: true };
   } else if ( d1 && d2  ) {
+    if ( !checkDateFormat(d1) || !checkDateFormat(d2) ) {
+      alert('Please enter a valid date in YYYY-MM-DD format.');
+      return;
+    }
     if ( Date.parse( d1 ) > Date.parse( d2 ) ) {
       alert('Start date is later than end date. Please try again.');
       return { emptyCnt: emptyCnt, formData: formData, alertValue: true };
     } else if ( (t1 && !t2) || (!t1 && t2) ) {
       alert('Please provide both start time and end time.');
+      return { emptyCnt: emptyCnt, formData: formData, alertValue: true };
+    } else if ( (t1 && t2) && (!checkTimeFormat(t1) || !checkTimeFormat(t2)) ) {
+      alert('Please enter a valid time in HH:MM 24 hour format.');
       return { emptyCnt: emptyCnt, formData: formData, alertValue: true };
     } else if ( (t1 && t2) && (t1 > t2) && (d1 == d2) ) {
       alert('Start time is later than end time. Please try again.');
