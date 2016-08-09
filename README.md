@@ -20,34 +20,33 @@ CalendarAPI provides below mentioned services for creating, editing, deleting an
 
 # Parameters
 1. For user signup:
-  *username: String
-  
-  *password: String
-  *fullname: String
+  *username: String,
+  *password: String,
+  *fullname: String,
   *email: String
 
 2. For user log-in:
-  *username: String
+  *username: String,
   *password: String
 
 3. For creating new event:
-  *startDate: YYYY-MM-DD
-  *endDate: YYYY-MM-DD
-  *startTime: HH:MM (24 hr format)
-  *endTime: HH:MM (24 hr format)
-  *description: String
+  *startDate: YYYY-MM-DD,
+  *endDate: YYYY-MM-DD,
+  *startTime: HH:MM (24 hr format),
+  *endTime: HH:MM (24 hr format),
+  *description: String,
   *place: String
 
 4. For searching events:
-  startDate: YYYY-MM-DD
+  startDate: YYYY-MM-DD,
   endDate: YYYY-MM-DD
 
 5. For updating an event:
-  startDate: YYYY-MM-DD
-  endDate: YYYY-MM-DD
-  startTime: HH:MM (24 hr format)
-  endTime: HH:MM (24 hr format)
-  description: String
+  startDate: YYYY-MM-DD,
+  endDate: YYYY-MM-DD,
+  startTime: HH:MM (24 hr format),
+  endTime: HH:MM (24 hr format),
+  description: String,
   place: String
 
 Date update require both starDate and endDate.
@@ -55,7 +54,7 @@ Time update require both startDate and endDate alongwith startTime and endTime.
 Description and place can be updated independently.
 
 6. For updating user information:
-  fullname: String
+  fullname: String,
   email: String
 
  ( '*' represents required field )
