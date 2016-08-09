@@ -34,6 +34,14 @@ function srchEvent(e) {
   e.preventDefault();
   var d1 = $('#eventform input#startDate').val();
   var d2 = $('#eventform input#endDate').val();
+  if ( d1 && !checkDateFormat(d1) ) {
+    alert('Please enter a valid start date in YYYY-MM-DD format.');
+    return;
+  }
+  if ( d2 && !checkDateFormat(d2) ) {
+    alert('Please enter a valid end date in YYYY-MM-DD format.');
+    return;
+  }
   if ( d1 && d2 ) {
     if ( Date.parse(d1) > Date.parse(d2) ) {
       alert('Start date is later than end date. Please try again.');
