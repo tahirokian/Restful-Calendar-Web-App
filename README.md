@@ -53,12 +53,12 @@ Date update require both starDate and endDate.
 Time update require both startDate and endDate alongwith startTime and endTime.
 Description and place can be updated independently.
 
- ( '*' represents required field )
- 
 6. For updating user information:
   fullname: String
   email: String
 
+ ( '*' represents required field )
+ 
 # Nodejs
 Nodejs can be downloaded from https://nodejs.org/en/
 For Nodejs documentation, please visit https://nodejs.org/en/docs/ 
