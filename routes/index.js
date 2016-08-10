@@ -40,7 +40,7 @@ router.post('/signup',
   })
 );
 
-/* If user credentails are not valid when login */
+/* If user credentails are not valid when try to login */
 router.get('/invaliduser', function(req, res){
   res.json({"success":false, "message": "Entered credentials are not correct"});
 });
@@ -85,13 +85,17 @@ router.get('/getevents', isAuthenticated, function(req, res) {
   });
 });
 
-/* POST search events */
+/* POST search events based on start and end date */
 router.post('/searchevents', isAuthenticated, function(req, res) {
   var result = Event.find({username: req.user.username});
-  if(req.body.startDate)
+  if (req.body.startDate && !req.body.endDate) {
+    result.where('startDate').eq(req.body.startDate);
+  } else if (req.body.endDate && !req.body.startDate) {
+    result.where('endDate').eq(req.body.endDate);  
+  } else if (req.body.endDate && req.body.startDate) {
     result.where('startDate').gte(req.body.startDate);
-  if(req.body.endDate)
     result.where('endDate').lte(req.body.endDate);
+  }
   result.sort({startDate: 'asc'});
   result.sort({startTime: 'asc'});
   result.exec(function(error, events){
