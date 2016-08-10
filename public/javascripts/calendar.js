@@ -9,14 +9,16 @@ var getAllEvents = function() {
       k=0;
       $.each(data, function(){
         events[k] = {
-          title: this.description + ' at ' + this.place, 
+          title: this.description, 
           start: this.startDate+'T'+this.startTime+':00', 
           end: this.endDate+'T'+this.endTime+':00', 
           id : this._id,
           startDate: this.startDate,
           endDate: this.endDate,
           startTime: this.startTime,
-          endTime: this.endTime
+          endTime: this.endTime,
+          description: this.description,
+          place: this.place
         };
 	      k++;
       });
@@ -58,8 +60,8 @@ var showCalendar = function(events) {
       });
     },
     eventClick: function(calEvent, jsEvent, view) {
-      $('#dialog-confirm').html('<p>Event detail: ' + calEvent.title + '<br />Start time: ' + calEvent.startDate + ', ' + calEvent.startTime + '<br />' +
-        'End time: ' + calEvent.endDate + ', ' + calEvent.endTime + '</p>');
+      $('#dialog-confirm').html('<p>Description: ' + calEvent.description + '<br />Place: ' + calEvent.place + '<br />Starts: ' + 
+        calEvent.startTime + ' on ' + calEvent.startDate + '<br />' + 'Ends: ' + calEvent.endTime + ' on ' + calEvent.endDate + '</p>');
       $('#dialog-confirm').dialog({
         height: 'auto',
         width: 400,
