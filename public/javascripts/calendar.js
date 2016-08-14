@@ -64,7 +64,7 @@ var showCalendar = function(events) {
         calEvent.startTime + ' on ' + calEvent.startDate + '<br />' + 'Ends: ' + calEvent.endTime + ' on ' + calEvent.endDate + '</p>');
       $('#dialog-confirm').dialog({
         height: 'auto',
-        width: 400,
+        width: 'auto',
         modal: true,
         buttons: {
           Edit: function() {
