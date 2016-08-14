@@ -46,7 +46,7 @@ var showCalendar = function(events) {
       $('#dialog-clickDay').html('<p>Do you want to add an event?</p>');
       $('#dialog-clickDay').dialog({
         height: 'auto',
-        width: 400,
+        width: 'auto',
         modal: true,
         buttons: {
           Yes: function() {

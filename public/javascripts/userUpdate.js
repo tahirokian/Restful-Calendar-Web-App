@@ -20,10 +20,10 @@ function userUpdate(e) {
   );
   $('#dialog-user').dialog({
     height: 'auto',
-    width: 350,
+    width: 'auto',
     modal: true,
     buttons: {
-      Ok: function() {
+      OK: function() {
         if ($('#dialog-user input#fullname').val()){
           userData.fullname = $('#dialog-user input#fullname').val();
           emptyCnt--;

@@ -8,7 +8,7 @@ function editDel() {
   $('#dialog-editDel').dialog({
     resizable: false,
     height: 'auto',
-    width: 400,
+    width: 'auto',
     modal: true,
     buttons: {
       Edit: function() {
@@ -49,7 +49,7 @@ var editEvent = function(id) {
   editFormHtml();
   $('#dialog-form').dialog({
     height: 'auto',
-    width: 350,
+    width: 'auto',
     modal: true,
     buttons: {
       Update: function() {
