@@ -81,6 +81,10 @@ For Mongoosejs API reference, please visit http://mongoosejs.com/docs/api.html
 Passport is authentication middleware for Node.js. It can be easily dropped in to any Express-based web application. Username and password based local authentication is used in this project.
 For Passportjs documentation, please visit http://passportjs.org/docs/overview
 
+# Calendar API
+FullCalendar is a jQuery plugin that provides a full-sized, drag & drop calendar. It uses AJAX to fetch events on-the-fly for each month and is easily configured.
+For FullCalendar documentation, please visit http://fullcalendar.io/
+
 # View engine
 Embedded JavaScript (ejs) is a client-side templating language and it is used as view engine.
 For more information, please visit https://www.npmjs.com/package/ejs
@@ -91,10 +95,10 @@ Before creating and updating any event in the database, provided date and time f
 # Set up:
 1. Install Nodejs and MongoDB
 2. Get source code:
-  git clone git@github.com:tahirokian/Resful-Calendar-Web-App.git 
+  git clone https://github.com/tahirokian/Restful-Calendar-Web-App.git 
   or Extract from the zip
 2. Install dependencies:   
   npm install
 3. Start MongoDB
-4. Use 'npm start' to start the server
+4. Use 'npm start' to start Nodejs server
 5. Open web browser and go to http://localhost:3000
