@@ -65,10 +65,8 @@ Calendar application provides below mentioned APIs for creating, editing, deleti
 # Request Route Parameters
 1. For fetching an event form database.
   /getevent/:id (id=google event id)
-
 2. For updating an event in database
   /editevent/:id  (id=local event id)
-
 3. For deleting and event in database.
   /delevent/:id (id= local event id)
 
