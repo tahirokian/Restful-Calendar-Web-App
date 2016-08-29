@@ -25,11 +25,9 @@ Calendar application provides below mentioned APIs for creating, editing, deleti
   *password: String,
   *fullname: String,
   *email: String
-
 2. For user log-in:
   *username: String,
   *password: String
-
 3. For creating new event:
   *startDate: YYYY-MM-DD,
   *endDate: YYYY-MM-DD,
@@ -37,11 +35,9 @@ Calendar application provides below mentioned APIs for creating, editing, deleti
   *endTime: HH:MM (24 hr format),
   *description: String,
   *place: String
-
 4. For searching events:
   startDate: YYYY-MM-DD,
   endDate: YYYY-MM-DD
-
 5. For updating an event:
   startDate: YYYY-MM-DD,
   endDate: YYYY-MM-DD,
@@ -49,17 +45,12 @@ Calendar application provides below mentioned APIs for creating, editing, deleti
   endTime: HH:MM (24 hr format),
   description: String,
   place: String
-
   Date update require both starDate and endDate.
-
   Time update require both startDate and endDate alongwith startTime and endTime.
-
   Description and place can be updated independently.
-
 6. For updating user information:
   fullname: String,
   email: String
-
  ( '*' represents required field )
 
 # Request Route Parameters
