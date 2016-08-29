@@ -45,8 +45,11 @@ Calendar application provides below mentioned APIs for creating, editing, deleti
   endTime: HH:MM (24 hr format),
   description: String,
   place: String
+
   Date update require both starDate and endDate.
+
   Time update require both startDate and endDate alongwith startTime and endTime.
+
   Description and place can be updated independently.
 6. For updating user information:
   fullname: String,
