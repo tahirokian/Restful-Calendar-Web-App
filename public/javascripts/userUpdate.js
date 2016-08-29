@@ -1,11 +1,13 @@
 $(document).ready(function() {
+  /* When user click update user button */
   $('#btnUpdateUser').on('click', userUpdate);
 });
 
 function userUpdate(e) {
-  var emptyCnt = 2;
+  var isEmpty = true; /* Has user filled any field to update user data? */
   var userData = {};
   e.preventDefault();
+  /* Add user data update form on dialog box. */
   $('#dialog-user').html('' +
     '<form class="form" role="form">' +
       '<div class="form-group">' +
@@ -26,15 +28,15 @@ function userUpdate(e) {
       OK: function() {
         if ($('#dialog-user input#fullname').val()){
           userData.fullname = $('#dialog-user input#fullname').val();
-          emptyCnt--;
+          isEmpty = false;
         }
         if ($('#dialog-user input#email').val()){
           userData.email = $('#dialog-user input#email').val();
-          emptyCnt--;
+          isEmpty = false;
         }
-        if (emptyCnt < 2){
-          sendToServer(userData);
-        } else {
+        if (!isEmpty){
+          sendUserData(userData);
+        } else {  /* If user has not filled any field */
           alert('Nothing to update. Press OK to continue.');
         }
         $( this ).dialog( 'close' );
@@ -46,7 +48,7 @@ function userUpdate(e) {
   });
 }
 
-var sendToServer = function(docs){
+var sendUserData = function(docs){
   $.ajax({
     type: 'PUT',
     url: '/edituser/',
