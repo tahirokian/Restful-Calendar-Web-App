@@ -1,8 +1,13 @@
 $(document).ready(function() {
+  /* Show search form. */
   $('#schevnt').on('click', searchEventhtml);
+  /* Search button clicked */
   $('#eventform').on('click', '#btnSchEvent', srchEvent);
+  /* Hide the search form */
   $('#eventform').on('click', '#btnSchCloseEvent', closeForm);
+  /* Hide the search form */
   $('#eventform').on('click', '#btnTablCloseEvent', closeForm);
+  /* If user want to seacrh again after search result shown to user */
   $('#eventform').on('click', '#btnSchAgain', searchEventhtml);
 });
 
@@ -48,13 +53,13 @@ function srchEvent(e) {
       return;
     }
   }
-  var conditions = {
+  var srchConditions = {
     'startDate': d1,
     'endDate': d2
   }
   $.ajax({
     type: 'POST',
-    data: conditions,
+    data: srchConditions,
     url: '/searchevents',
     dataType: 'JSON'
   }).done(function( res, status ) {
@@ -67,6 +72,7 @@ function srchEvent(e) {
   });
 };
 
+/* Show search result in table */
 function showEventsTable(events) {
   var tableContent = '';
   if (events && events.length) {
@@ -78,7 +84,8 @@ function showEventsTable(events) {
       tableContent += '<td>' + this.endTime + '</td>';
       tableContent += '<td>' + this.description + '</td>';
       tableContent += '<td>' + this.place + '</td>';
-      tableContent += '<td><button id="btnEditDel" class="btn btn-info center-block" name=' + this._id  + '>Edit/Del</button></td>'; 
+      /* name attribute value is used to update or delete events */
+      tableContent += '<td><button id="btnEditDel" class="btn btn-info center-block" name=' + this._id  + '>Edit/Del</button></td>';
       tableContent += '</tr>';
     });
     $('#eventform').html(''+
@@ -87,7 +94,7 @@ function showEventsTable(events) {
         '<table class="table table-striped table-bordered table-sm">' +
           '<thead class="bg-success text-center">' +
             '<tr><th>Start Date</th><th>End Date</th><th>Start Time</th><th>End Time</th><th>Description</th><th>Location</th><th>Action</tr>' +
-          '</thead>' + 
+          '</thead>' +
           '<tbody>' + tableContent + '</tbody>' +
         '</table>' +
       '</div>' +
@@ -101,4 +108,3 @@ function showEventsTable(events) {
     alert('No events found. Please try again.');
   }
 };
-
