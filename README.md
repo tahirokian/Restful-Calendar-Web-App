@@ -97,8 +97,7 @@ FullCalendar is a jQuery plugin that provides a full-sized, drag & drop calendar
 For FullCalendar documentation, please visit http://fullcalendar.io/
 
 # Google Calendar API
-The Google Calendar API can be used to display, create and modify calendar events as well as work with many other calendar-related objects. For an easy step-by-step procedure to make RESTful API calls and use client libraries for JavaScript, please visit https://developers.google.com/google-apps/calendar/quickstart/js
-For Google calendar API reference, please visit https://developers.google.com/google-apps/calendar/v3/reference/
+The Google Calendar API can be used to display, create and modify calendar events as well as work with many other calendar-related objects. For an easy step-by-step procedure to make RESTful API calls and use client libraries for JavaScript, please visit https://developers.google.com/google-apps/calendar/quickstart/js. For Google calendar API reference, please visit https://developers.google.com/google-apps/calendar/v3/reference/
 
 # View Engine
 Embedded JavaScript (ejs) is a client-side templating language and it is used as view engine.
