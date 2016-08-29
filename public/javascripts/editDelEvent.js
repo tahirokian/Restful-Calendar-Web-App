@@ -1,8 +1,11 @@
 $(document).ready(function() {
-  $('#eventform').on('click', '#btnEditDel', editDel);
+  /* Edit or delete an event from search result table */
+  $('#eventform').on('click', '#btnEditDel', showEditDelDialog);
 });
 
-function editDel() {
+function showEditDelDialog(e) {
+  e.preventDefault();
+  /* name attribute contains id value. From showEventsTable function in searchEvent.js */
   var id = $(this).attr('name');
   $('#dialog-editDel').html('Please select what you want to do:');
   $('#dialog-editDel').dialog({
@@ -13,11 +16,11 @@ function editDel() {
     buttons: {
       Edit: function() {
         $( this ).dialog( 'close' );
-        editEvent(id);
+        editEvent(id);  /* Update event based on event id */
       },
       Delete: function() {
         $( this ).dialog( 'close' );
-        deleteEvent(id);
+        deleteEvent(id);  /* Delete event based on event id */
       },
       Close: function() {
         $( this ).dialog( 'close' );
@@ -45,7 +48,8 @@ var deleteEvent = function(id) {
 };
 
 var editEvent = function(id) {
-  var editData, noData = true;
+  var inputData;
+  /* Show form on dialog box to update an event */
   editFormHtml();
   $('#dialog-form').dialog({
     height: 'auto',
@@ -53,13 +57,17 @@ var editEvent = function(id) {
     modal: true,
     buttons: {
       Update: function() {
-        editData = processInputData();
-        /*This check ensures if else below only executes when there is a valid data */
-        if ( editData.alertValue ) noData = false; 
-        if (editData.emptyCnt < 6){
-          updateEvent(editData.formData, id);
+        /* Validate form input data when update button is clicked */
+        inputData = processInputData();
+        /* If user has entered valid data. */
+        if (!inputData.isInValid){
+          sendUpdateEvent(inputData.event, id);
           $(this).dialog( 'close' );
-        } else if ( noData ) {
+        }
+        /* If user has clicked update button without providing any input. Only show this
+         * alert box if no alert box shown to user in processInputData().
+         */
+        else if (!inputData.alertValue && inputData.isInValid) {
           alert('Nothing to update. Press OK to continue.');
           $(this).dialog( 'close' );
         }
@@ -103,59 +111,77 @@ var editFormHtml = function() {
 }
 
 var processInputData = function() {
-  var emptyCnt = 6;
-  var formData = {};
+  var isInValid = true; /* Checks if user has entered valid data? */
+  var eventData = {};
   var d1, d2, t1, t2;
   d1 = $('#dialog-form input#startDate').val();
   d2 = $('#dialog-form input#endDate').val();
   t1 = $('#dialog-form input#startTime').val();
   t2 = $('#dialog-form input#endTime').val();
+  /* Date update require both start and end date. Time update require start/end date && start/end time.
+   * Description and place can be updated independently.
+   */
   if ( (d1 && !d2) || (!d1 && d2) ) {
     alert('Please provide both start date and end date.');
-    return { emptyCnt: emptyCnt, formData: formData, alertValue: true };
-  } else if ( d1 && d2  ) {
+    /* alertValue key checks if any alert has been shown to user because of invalid/incomlete data? */
+    return { isInValid: isInValid, event: eventData, alertValue: true };
+  }
+  /* If both dates entered, checkDateFormat function from addEvent.js */
+  else if ( d1 && d2  ) {
     if ( !checkDateFormat(d1) || !checkDateFormat(d2) ) {
       alert('Please enter a valid date in YYYY-MM-DD format.');
-      return;
+      return { isInValid: isInValid, event: eventData, alertValue: true };
     }
     if ( Date.parse( d1 ) > Date.parse( d2 ) ) {
       alert('Start date is later than end date. Please try again.');
-      return { emptyCnt: emptyCnt, formData: formData, alertValue: true };
-    } else if ( (t1 && !t2) || (!t1 && t2) ) {
+      return { isInValid: isInValid, event: eventData, alertValue: true };
+    }
+    /* If one of start or end time is provided by user and both dates are provided. */
+    else if ( (t1 && !t2) || (!t1 && t2) ) {
       alert('Please provide both start time and end time.');
-      return { emptyCnt: emptyCnt, formData: formData, alertValue: true };
-    } else if ( (t1 && t2) && (!checkTimeFormat(t1) || !checkTimeFormat(t2)) ) {
+      return { isInValid: isInValid, event: eventData, alertValue: true };
+    }
+    /* If both start and end time are entered, checkTimeFormat function from addEvent.js */
+    else if ( (t1 && t2) && (!checkTimeFormat(t1) || !checkTimeFormat(t2)) ) {
       alert('Please enter a valid time in HH:MM 24 hour format.');
-      return { emptyCnt: emptyCnt, formData: formData, alertValue: true };
-    } else if ( (t1 && t2) && (t1 > t2) && (d1 == d2) ) {
+      return { isInValid: isInValid, event: eventData, alertValue: true };
+    }
+    /* Check if start time is later than end time when start and end date are same */
+    else if ( (t1 && t2) && (t1 > t2) && (d1 == d2) ) {
       alert('Start time is later than end time. Please try again.');
-      return { emptyCnt: emptyCnt, formData: formData, alertValue: true };
-    } else {
-      formData.startDate = d1;
-      formData.endDate = d2;
-      emptyCnt -= 2;
-      if ( t1 && t2 ){
-        formData.startTime = t1;
-        formData.endTime = t2;
-        emptyCnt -= 2;
+      return { isInValid: isInValid, event: eventData, alertValue: true };
+    }
+    /* Create update event */
+    else {
+      eventData.startDate = d1;
+      eventData.endDate = d2;
+      isInValid = false;  /* Valid data */
+      if ( t1 && t2 ){    /* If user want to update time of event. */
+        eventData.startTime = t1;
+        eventData.endTime = t2;
       }
     }
-  } else if ( (t1 || t2) ){
+  }
+  /* If start and end date not provided but one or both the time values are entered by the user.
+   * Time update require both start and end date.
+   */
+  else if ( (t1 || t2) ){
     alert('Please provide start date and end date alongwith start time and end time.');
-    return { emptyCnt: emptyCnt, formData: formData, alertValue: true };
+    return { isInValid: isInValid, event: eventData, alertValue: true };
   }
   if ($('#dialog-form input#description').val()) {
-    formData.description = $('#dialog-form input#description').val();
-    emptyCnt--;
+    eventData.description = $('#dialog-form input#description').val();
+    isInValid = false;
   }
   if ($('#dialog-form input#place').val()) {
-    formData.place = $('#dialog-form input#place').val();
-    emptyCnt--;
+    eventData.place = $('#dialog-form input#place').val();
+    isInValid = false;
   }
-  return { emptyCnt: emptyCnt, formData: formData, alertValue: false };
+  /* If user has not filled any field, isInValid will still be true, otherwise fasle. */
+  return { isInValid: isInValid, event: eventData, alertValue: false };
 };
 
-var updateEvent = function(docs, id){
+var sendUpdateEvent = function(docs, id){
   $.ajax({
     type: 'PUT',
     url: '/editevent/' + id,
@@ -170,4 +196,3 @@ var updateEvent = function(docs, id){
     }
   });
 }
-
