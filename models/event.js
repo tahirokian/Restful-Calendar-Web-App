@@ -7,8 +7,8 @@ var eventSchema = mongoose.Schema({
   endTime: String,
   description: String,
   place: String,
-  username: String
-  //googleeventid: String
+  username: String,
+  googleId: String
 });
 
 module.exports = mongoose.model('Event', eventSchema);
