@@ -1,11 +1,12 @@
-/* signup.js */
 $(document).ready(function() {
+  /* User clicekd signup button */
   $("#signupbtn").on("click", userSignUp);
 });
 
 function userSignUp(e) {
   e.preventDefault();
   var errorCnt = 0;
+  /* Check if user has filled in all fields? */
   $('#signupform input').each(function(index, val) {
     if($(this).val() === '') { errorCnt++; }
   });
@@ -14,25 +15,22 @@ function userSignUp(e) {
       'username': $('#username').val(),
       'password': $('#password').val(),
       'email': $('#email').val(),
-      'fullname': $('#fullname').val()	
+      'fullname': $('#fullname').val()
     }
     $.ajax({
       type: 'POST',
       url: '/signup',
       data: signupuser
     }).done(function(response, status) {
-      if (response.success) {
-        window.location.replace(response.url);
-        if (response.message)
-	  alert(response.message);
+      if (response.success) {   //If signup success
+        window.location.replace('/home');
       } else {
-          if (response.message)
-	    alert(response.message);
+        alert('Username already exists. Please try again.');
       }
     });
   }
   else {
-    alert('Please provide all information for SignUp');
+    alert('Please provide all information for signup.');
     return false;
-  } 
+  }
 }
