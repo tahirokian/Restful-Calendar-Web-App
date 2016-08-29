@@ -1,10 +1,14 @@
 $(document).ready(function() {
+  /* Show form for adding an event. */
   $('#addevnt').on('click', addEventhtml);
+  /* Add event to database */
   $('#eventform').on('click', '#btnAddEvent', addEvent);
+  /* Colse add event form */
   $('#eventform').on('click', '#btnAddCloseEvent', closeForm);
 });
 
-function addEventhtml() {
+function addEventhtml(e) {
+  e.preventDefault();
   $('#eventform').html(''+
     '<form class="form" role="form">' +
       '<legend><strong>Add Event</strong>:</legend>' +
@@ -50,6 +54,7 @@ function addEventhtml() {
 function addEvent(e) {
   e.preventDefault();
   var errorCnt = 0;
+  /* Check if user has filled all fields? */
   $('#eventform input').each(function(index, val) {
     if($(this).val() === '') { errorCnt++; }
   });
@@ -58,19 +63,22 @@ function addEvent(e) {
     var d2 = $('#eventform input#endDate').val();
     var t1 = $('#eventform input#startTime').val();
     var t2 = $('#eventform input#endTime').val();
+    /* Verify date format YYYY-MM-DD */
     if ( !checkDateFormat(d1) || !checkDateFormat(d2) ) {
       alert('Please enter a valid date in YYYY-MM-DD format.');
       return;
     }
+    /* Verify time format HH:MM */
     if ( !checkTimeFormat(t1) || !checkTimeFormat(t2) ) {
       alert('Please enter a valid time in HH:MM 24 hour format.');
       return;
     }
+    /* Check if start date/time is before end date/time? */
     if ( Date.parse(d1) > Date.parse(d2) ) {
       alert('Start date is later than end date');
     } else if ( (t1 > t2)  && (Date.parse(d1) == Date.parse(d2)) ) {
       alert("Start time is later than end time");
-    } else {
+    } else {  /* Make event object */
       var newEvent = {
         'startDate': d1,
         'endDate': d2,
@@ -84,16 +92,16 @@ function addEvent(e) {
         data: newEvent,
         url: '/addevent',
         dataType: 'JSON'
-      }).done(function( res, status ) {
+      }).done(function(res, status) {
         if (status) {
           window.location.replace('/home');
         } else {
-    alert('Error: ' + res);
+          alert('Error: ' + res);
         }
       });
     }
   } else {
-    alert('Please fill in all fields');
+    alert('Please fill in all fields.');
     return false;
   }
 };
@@ -103,11 +111,13 @@ function closeForm(e) {
   $('#eventform').html('');
 }
 
+/* Date format YYYY-MM-DD */
 function checkDateFormat (dateVal) {
   var dateRegEx = /^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/;
   return dateRegEx.test(dateVal);
 }
 
+/* Time format HH:MM 24 hour */
 function checkTimeFormat(timeVal) {
   var timeRegEx = /^(0[0-9]|1[0-9]|2[0-3])[:]([0-5][0-9])$/;
   return timeRegEx.test(timeVal);
