@@ -108,9 +108,7 @@ Before creating and updating any event in the database, provided date and time f
 
 # Set Up:
 1. Install Nodejs and MongoDB
-2. Get source code:
-  git clone https://github.com/tahirokian/Restful-Calendar-Web-App.git
-  or Extract from the zip
+2. Get source code: git clone https://github.com/tahirokian/Restful-Calendar-Web-App.git or Extract from the zip
 3. Get OAuth client ID for google calendar API form https://console.developers.google.com
 4. In public/javascripts directory, add CLIENT_ID field retrieved from google developers console to syncFromGcal.js and syncToGcal.js.
 5. Install dependencies with 'npm install'
